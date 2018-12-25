@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.ProductCategoryMapper">
+    <select id="queryProType" resultType="com.bdqn.entity.ProductCategory">
+        select * from easybuy_product_category
+    </select>
+    
+    <insert id="addProType" parameterType="com.bdqn.entity.ProductCategory">
+         insert into easybuy_product_category(cname, parentId, type)
+         value (#{cname},#{parentId},#{type})
+    </insert>
+
+    <select id="queryTypeId" resultType="com.bdqn.entity.ProductCategory">
+        select * from easybuy_product_category WHERE type = 1
+    </select>
+    <select id="queryTypeId2" resultType="com.bdqn.entity.ProductCategory">
+        select * from easybuy_product_category WHERE type = 2
+    </select>
+    <select id="queryTypeId3" resultType="com.bdqn.entity.ProductCategory">
+        select * from easybuy_product_category WHERE type = 3
+    </select>
+    <select id="byid" resultType="com.bdqn.entity.ProductCategory">
+        select * from easybuy_product_category
+        WHERE id = #{id}
+    </select>
+    
+    <update id="update" parameterType="com.bdqn.entity.ProductCategory">
+        update easybuy_product_category
+        set cname = #{cname}, type = #{type}
+        where id = #{id}
+    </update>
+
+    <delete id="del" parameterType="int">
+        DELETE FROM easybuy_product_category
+        WHERE id = #{id}
+    </delete>
+
+
+</mapper>
